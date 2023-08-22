@@ -17,7 +17,7 @@
     "rimraf": "^5.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.5.1",
+    "@types/node": "^20.5.3",
     "node-gyp": "^9.4.0",
     "nodemon": "^3.0.1"
   }

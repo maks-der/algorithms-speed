@@ -1,0 +1,24 @@
+{
+  "name": "algorithms-speed",
+  "description": "",
+  "version": "0.0.1",
+  "main": "app.js",
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "scripts": {
+    "start": "npm run clear:addon && npm run build:addon && node app.js",
+    "dev": "nodemon app.js",
+    "build:addon": "node-gyp configure build",
+    "clear:addon": "rimraf ./build"
+  },
+  "dependencies": {
+    "node": "^20.5.0",
+    "rimraf": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.1",
+    "node-gyp": "^9.4.0",
+    "nodemon": "^3.0.1"
+  }
+}

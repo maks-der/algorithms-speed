@@ -7,10 +7,14 @@
   "license": "ISC",
   "type": "commonjs",
   "scripts": {
-    "start": "npm run clear:addon && npm run build:addon && node app.js",
-    "dev": "nodemon app.js",
-    "build:addon": "node-gyp configure build",
-    "clear:addon": "rimraf ./build"
+    "start": "npm run build:addon && npm run build:ts && npm run copy:addon && node ./dist/app.js",
+    "start:ts": "npm run build:addon && ts-node app.ts",
+    "dev": "nodemon app.ts",
+    "build:addon": "npm run clear:addon && node-gyp configure build",
+    "build:ts": "npm run clear:ts && tsc -p tsconfig.json",
+    "clear:addon": "rimraf ./build",
+    "clear:ts": "rimraf ./dist",
+    "copy:addon": "cpy build dist"
   },
   "dependencies": {
     "node": "^20.5.0",
@@ -18,7 +22,10 @@
   },
   "devDependencies": {
     "@types/node": "^20.5.3",
+    "cpy-cli": "^5.0.0",
     "node-gyp": "^9.4.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
   }
 }

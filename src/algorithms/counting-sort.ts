@@ -1,4 +1,4 @@
-function countingSort(arr) {
+export function countingSort(arr: number[]): number[] {
     const max = Math.max(...arr);
     const min = Math.min(...arr);
     const range = max - min + 1;
@@ -25,5 +25,3 @@ function countingSort(arr) {
 
     return outputArray;
 }
-
-module.exports = { countingSort }

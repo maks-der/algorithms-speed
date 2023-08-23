@@ -1,4 +1,4 @@
-function getMax(arr) {
+function getMax(arr: number[]): number {
     let max = arr[0];
     for (let num of arr) {
         if (num > max) {
@@ -8,7 +8,7 @@ function getMax(arr) {
     return max;
 }
 
-function countingSort(arr, exp) {
+function countingSort(arr: number[], exp: number): void {
     const n = arr.length;
     const output = new Array(n).fill(0);
     const count = new Array(10).fill(0);
@@ -31,7 +31,7 @@ function countingSort(arr, exp) {
     }
 }
 
-function radixSort(arr) {
+export function radixSort(arr: number[]): number[] {
     const max = getMax(arr);
 
     for (let exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
@@ -40,5 +40,3 @@ function radixSort(arr) {
 
     return arr;
 }
-
-module.exports = { radixSort }

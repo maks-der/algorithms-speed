@@ -1,6 +1,6 @@
-const { funcExecutionTime } = require('./src/time-counter.js');
-const { generateRandomArray } = require("./src/arrays.js");
-const {
+import { funcExecutionTime } from './src/time-counter';
+import { generateRandomArray } from './src/arrays';
+import {
     bubbleSort,
     jsSort,
     countingSort,
@@ -10,9 +10,10 @@ const {
     quickSort,
     radixSort,
     selectionSort,
-} = require('./javascript/algorithms');
-const addon = require('./build/Release/addon');
+} from './src/algorithms';
 
+// Should stay require 
+const addon = require('./build/Release/addon');
 
 console.log('> Start')
 

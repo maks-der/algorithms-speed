@@ -1,4 +1,4 @@
-function heapSort(arr) {
+export function heapSort(arr: number[]): number[] {
     const len = arr.length;
 
     // Build max heap
@@ -20,7 +20,7 @@ function heapSort(arr) {
     return arr;
 }
 
-function heapify(arr, n, i) {
+function heapify(arr: number[], n: number, i: number) {
     let largest = i;
     const left = 2 * i + 1;
     const right = 2 * i + 2;
@@ -43,5 +43,3 @@ function heapify(arr, n, i) {
         heapify(arr, n, largest);
     }
 }
-
-module.exports = { heapSort }

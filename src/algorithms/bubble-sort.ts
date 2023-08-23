@@ -1,4 +1,4 @@
-function bubbleSort(arr) {
+export function bubbleSort(arr: number[]): number[] {
   let len = arr.length;
   let swapped;
 
@@ -17,5 +17,3 @@ function bubbleSort(arr) {
 
   return arr;
 }
-
-module.exports = {bubbleSort};

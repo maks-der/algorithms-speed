@@ -1,4 +1,4 @@
-function quickSort(arr) {
+export function quickSort(arr: number[]): number[] {
     if (arr.length <= 1) {
         return arr;
     }
@@ -17,5 +17,3 @@ function quickSort(arr) {
 
     return [...quickSort(left), pivot, ...quickSort(right)];
 }
-
-module.exports = { quickSort }

@@ -1,26 +1,39 @@
 {
-  "name": "algorithms-speed",
-  "description": "",
+  "name": "algorithms-speed-comparison",
+  "description": "This project uses the capability to develop Node.js addons using C++, subsequently analyzing the algorithmic execution time in the Node.js runtime environment for both JavaScript and C++.",
+  "keywords": [
+    "nodejs",
+    "addon",
+    "c++",
+    "algorithm",
+    "comparison"
+  ],
   "version": "0.0.1",
   "main": "app.js",
-  "author": "",
-  "license": "ISC",
+  "author": "Maksym Derevianchenko",
+  "license": "MIT",
   "type": "commonjs",
   "scripts": {
-    "start": "npm run build:addon && npm run build:ts && npm run copy:addon && node ./dist/app.js",
+    "start": "npm run build:addon && npm run build:ts && npm run copy:all && node ./dist/app.js",
     "start:ts": "npm run build:addon && ts-node app.ts",
-    "dev": "nodemon app.ts",
+    "dev": "nodemon app.ts --ignore src/server/temp",
     "build:addon": "npm run clear:addon && node-gyp configure build",
     "build:ts": "npm run clear:ts && tsc -p tsconfig.json",
+    "clear:all": "npm run clear:addon && npm run clear:ts",
     "clear:addon": "rimraf ./build",
     "clear:ts": "rimraf ./dist",
-    "copy:addon": "cpy build dist"
+    "copy:all": "npm run copy:addon && npm run copy:public && npm run copy:temp",
+    "copy:addon": "cpy build dist",
+    "copy:public": "cpy src/server/public dist",
+    "copy:temp": "cpy src/server/temp dist"
   },
   "dependencies": {
+    "express": "^4.18.2",
     "node": "^20.5.0",
     "rimraf": "^5.0.1"
   },
   "devDependencies": {
+    "@types/express": "^4.17.17",
     "@types/node": "^20.5.3",
     "cpy-cli": "^5.0.0",
     "node-gyp": "^9.4.0",

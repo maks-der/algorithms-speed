@@ -1,5 +1,5 @@
-const { funcExecutionTime } = require('./javascript/scripts/time-counter.js');
-const { generateRandomArray } = require("./javascript/scripts/arrays.js");
+const { funcExecutionTime } = require('./src/time-counter.js');
+const { generateRandomArray } = require("./src/arrays.js");
 const {
     bubbleSort,
     jsSort,

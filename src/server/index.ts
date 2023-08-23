@@ -11,7 +11,7 @@ export class Server {
             res.sendFile(join(__dirname, './temp/results.json'));
         });
 
-        app.get('/', express.static(join(__dirname, './public')));
+        app.use('/', express.static(join(__dirname, './public')));
 
         app.listen(this.port, () => {
             console.log(`Server started.\nResults here: http://localhost:${this.port}`);

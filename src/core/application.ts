@@ -39,7 +39,7 @@ export class Application {
             js: jsResults,
             cpp: cppResults,
         }
-        console.log(results);
+        // console.log(results);
         this.saveResults(JSON.stringify(results));
 
         const server = new Server();
@@ -50,7 +50,6 @@ export class Application {
         const tasksRunner = new TasksRunner('JS', iterations, arrayLength);
 
         tasksRunner.addTask(bubbleSort);
-        tasksRunner.addTask(jsSort);
         tasksRunner.addTask(countingSort);
         tasksRunner.addTask(heapSort);
         tasksRunner.addTask(insertionSort);
@@ -58,6 +57,7 @@ export class Application {
         tasksRunner.addTask(quickSort);
         tasksRunner.addTask(radixSort);
         tasksRunner.addTask(selectionSort);
+        tasksRunner.addTask(jsSort);
 
         const algResults = tasksRunner.execute();
         const stats = Statistics.getStats(algResults);

@@ -21,29 +21,16 @@ export class TasksRunner {
 
         for (let i = 0; i < this.times; i++) {
             const map = new Map<string, number>();
-            // const info = [];
 
-            console.log(`${this.prefix} - ${i + 1} iteration of array[${this.array.length}]`);
+            console.log(`${this.prefix}: array[${this.array.length}], iteration: ${i + 1}`);
 
             for (const [name, func] of this.tasks) {
                 const copyArr = [...this.array];
-
-                // process.stdout.write(`${this.parseFuncName(name)} of array[${this.array.length}]... `);
                 const execTime = this.funcExecutionTime(() => func(copyArr));
-                // console.log(`Finished`);
-
                 map.set(name, execTime);
-                // info.push({
-                //     info: `${this.prefix}: ${this.parseFuncName(name)}`,
-                //     time: `${execTime} ms`
-                // });
             }
 
             res.push(map);
-            // console.table(info.map((i) => ({
-            //     info: i.info.padEnd(52),
-            //     time: i.time.padStart(14),
-            // })));
         }
         return res;
     }
@@ -65,17 +52,5 @@ export class TasksRunner {
         const endTime = process.hrtime(startTime);
 
         return (endTime[0] * 1000) + (endTime[1] / 1e6);
-    }
-
-    private parseFuncName(str: string): string {
-        let res = '';
-        for (let i = 0; i < str.length; i++) {
-            if (/^[A-Z]*$/.test(str[i])) {
-                res += ' ' + str[i].toLowerCase();
-                continue;
-            }
-            res += str[i];
-        }
-        return res;
     }
 }

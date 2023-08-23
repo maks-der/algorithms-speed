@@ -3,128 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Line Chart Example</title>
-        <!-- Include Chart.js library -->
+        <title>Results</title>
+        <base href="./">
+        <link rel="stylesheet" href="style.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
-    <body style="background-color: #292929; color: #fff;">
-        <!-- <div
-            style="display: flex; justify-content: space-between; width: 80%; margin: auto;"> -->
-            <div style="width: 80%; margin: auto; margin-bottom: 5rem;">
-                <canvas id="lineChart1"></canvas>
-            </div>
-            <div style="width: 80%; margin: auto;margin-bottom: 5rem;">
-                <canvas id="lineChart2"></canvas>
-            </div>
-        <!-- </div> -->
+    <body>
+        <div class="chart-block">
+            <h2>JavaScript</h2>
+            <canvas id="jsChart"></canvas>
+        </div>
+        <div class="chart-block">
+            <h2>C++</h2>
+            <canvas id="cppChart"></canvas>
+        </div>
 
-        <script>
-        // Get the canvas element
-        const ctx1 = document.getElementById('lineChart1').getContext('2d');
-        const ctx2 = document.getElementById('lineChart2').getContext('2d');
-        const brightColors = [
-            '#FF5733',
-            '#33FF57',
-            '#5733FF',
-            '#FF33E9',
-            '#33E9FF',
-            '#E9FF33',
-            '#FFC433',
-            '#C433FF',
-            '#33FFC4',
-            '#33FF72',
-            '#FF3333',
-            '#33FF33',
-            '#3333FF',
-            '#FF33FF',
-            '#FFFF33',
-            '#33FFFF',
-            '#FF9933',
-            '#9933FF',
-            '#33FF99',
-            '#FF3399'
-            ];
-
-        function createConfig(chartLabels, chartDataset) {
-            const gridSettings = {
-                beginAtZero: true,
-                grid: { color: '#444' },
-                ticks: { color: '#ddd'}
-            };
-            return ({
-                    type: 'line',
-                    data: {
-                        labels: chartLabels,
-                        datasets: chartDataset,
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            x: gridSettings,
-                            y: gridSettings,
-                        }
-                    }
-                });
-        }
-
-        function createDatasetItem(title, data, color) {
-            return ({
-                label: title,
-                borderColor: color,
-                data: data,
-                fill: true,
-            });
-        }
-
-        function createDataset(data) {
-            const res = [];
-            const map = new Map();
-
-            data.forEach(dataSet => {
-                dataSet.stats.forEach(stat => {
-                    const {title, average} = stat;
-                    if (map.has(title)) {
-                        const data = map.get(title)
-                        data.push(average)
-                        map.set(title, data);
-                        return;
-                    }
-                    map.set(title, [average]);
-
-                    // res.push(data);
-                });
-            });
-
-            console.log(map);
-            colorIndex = 0;
-            for (const [title, timeSeries] of map) {
-                res.push(createDatasetItem(title, timeSeries, brightColors[colorIndex]));
-                colorIndex++;
-            }
-
-            
-            return res;
-        }
-        
-        fetch('data')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                
-                const jsLabels = data.js.map(element => element.arrayLength);
-                const cppLabels = data.cpp.map(element => element.arrayLength);
-               
-                const jsDataset = createDataset(data.js);
-                const cppDataset = createDataset(data.cpp);
-
-                console.log(jsDataset);
-
-                const lineChart1 = new Chart(ctx1, createConfig(jsLabels, jsDataset));
-                const lineChart2 = new Chart(ctx2, createConfig(cppLabels, cppDataset));
-
-            }).catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    </script>
+        <script src="main.js"></script>
     </body>
 </html>

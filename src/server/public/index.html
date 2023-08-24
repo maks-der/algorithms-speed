@@ -5,18 +5,68 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Results</title>
         <base href="./">
+        <link rel="icon" href="fav.png" type="image/x-icon">
         <link rel="stylesheet" href="style.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
-        <div class="chart-block">
-            <h2>JavaScript</h2>
-            <canvas id="jsChart"></canvas>
+        
+        <div class="chart-row">
+            <div class="chart-block">
+                <h2>JavaScript</h2>
+                <canvas id="jsChart"></canvas>
+            </div>
+            <div class="chart-block">
+                <h2>C++</h2>
+                <canvas id="cppChart"></canvas>
+            </div>
         </div>
-        <div class="chart-block">
-            <h2>C++</h2>
-            <canvas id="cppChart"></canvas>
+        
+        <div class="chart-row">
+            <div class="chart-block">
+                <h2>Bubble sort</h2>
+                <canvas id="bubble-sort"></canvas>
+            </div>
+            <div class="chart-block">
+                <h2>Counting sort</h2>
+                <canvas id="counting-sort"></canvas>
+            </div>
+            <div class="chart-block">
+                <h2>Heap sort</h2>
+                <canvas id="heap-sort"></canvas>
+            </div>
         </div>
+
+        <div class="chart-row">
+            <div class="chart-block">
+                <h2>Insertion sort</h2>
+                <canvas id="insertion-sort"></canvas>
+            </div>
+            <div class="chart-block">
+                <h2>Merge sort</h2>
+                <canvas id="merge-sort"></canvas>
+            </div>
+            <div class="chart-block">
+                <h2>Quick sort</h2>
+                <canvas id="quick-sort"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-row">
+            <div class="chart-block">
+                <h2>Radix sort</h2>
+                <canvas id="radix-sort"></canvas>
+            </div>
+            <div class="chart-block">
+                <h2>Selection sort</h2>
+                <canvas id="selection-sort"></canvas>
+            </div>
+            <div class="chart-block">
+                <h2>sort() and std::sort()</h2>
+                <canvas id="sort-func"></canvas>
+            </div>
+        </div>
+
 
         <script src="main.js"></script>
     </body>

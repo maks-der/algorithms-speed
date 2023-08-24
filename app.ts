@@ -9,7 +9,8 @@ app.run();
 console.log('> End');
 
 // TODO: update logic of configuration
-// TODO: update UI
+
+// TODO: function that creates array of numbers should be with unique values or close to it
 // TODO: refactor algorithms
 // TODO: add eslint
 // TODO: add some linter to cpp?

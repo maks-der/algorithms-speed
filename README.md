@@ -26,6 +26,12 @@ To get proper build of C++ addon:
 To build C++ addon, TypeScript to JS and run project use `npm start`
 To build C++ addon and start TypeScript use `npm run start:ts`
 
+### Process of execution
+1. Build of C++ addon;
+1. Compiling TypeScript to JavaScript;
+1. Algorithms execution;
+1. Saving result data;
+1. Starting server at http://localhost:3000 with results charts.
 
 ### Configuration
 

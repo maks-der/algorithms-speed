@@ -1,13 +1,12 @@
 export function bubbleSort(arr: number[]): number[] {
-  let len = arr.length;
-  let swapped;
+  let swapped: boolean;
 
   do {
     swapped = false;
 
-    for (let i = 0; i < len - 1; i++) {
+    for (let i = 0; i < arr.length - 1; i++) {
       if (arr[i] > arr[i + 1]) {
-        let temp = arr[i];
+        const temp = arr[i];
         arr[i] = arr[i + 1];
         arr[i + 1] = temp;
         swapped = true;

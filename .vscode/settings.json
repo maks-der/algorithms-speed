@@ -49,5 +49,8 @@
         "xutility": "cpp",
         "iostream": "cpp",
         "istream": "cpp"
-    }
+    },
+    "cSpell.words": [
+        "napi"
+    ]
 }

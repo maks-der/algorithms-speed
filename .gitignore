@@ -1,4 +1,5 @@
 build
+results
 src/server/temp/results.json
 
 # Logs

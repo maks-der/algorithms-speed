@@ -7,7 +7,7 @@ export function quickSort(arr: number[]): number[] {
     const left = [];
     const right = [];
 
-    for (let num of arr) {
+    for (const num of arr) {
         if (num < pivot) {
             left.push(num);
         } else if (num > pivot) {

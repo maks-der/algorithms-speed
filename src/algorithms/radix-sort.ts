@@ -1,6 +1,6 @@
 function getMax(arr: number[]): number {
     let max = arr[0];
-    for (let num of arr) {
+    for (const num of arr) {
         if (num > max) {
             max = num;
         }

@@ -1,4 +1,4 @@
-import { TasksRunner } from "./tasks-runner";
+import { TasksRunner } from './tasks-runner';
 import {
     bubbleSort,
     jsSort,
@@ -10,13 +10,14 @@ import {
     radixSort,
     selectionSort,
 } from '../algorithms';
-import { IStat, Statistics } from "./statistics";
-import * as config from '../../app.config.json'
-import { writeFileSync } from "fs";
-import { join } from "path";
-import { Server } from "../server";
-// Should stay require
-const addon = require('../../build/Release/addon');
+import { IStat, Statistics } from './statistics';
+import * as config from '../../app.config.json';
+import { writeFileSync } from 'fs';
+import { join } from 'path';
+import { Server } from '../server';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const addon = require('../../build/Release/addon'); // Should stay require
 
 export interface IArrayStats {
     arrayLength: number;
@@ -38,7 +39,7 @@ export class Application {
         const results = {
             js: jsResults,
             cpp: cppResults,
-        }
+        };
         // console.log(results);
         this.saveResults(JSON.stringify(results));
 
@@ -69,15 +70,15 @@ export class Application {
     private runCppAlgorithms(iterations: number, arrayLength: number): IArrayStats {
         const tasksRunner = new TasksRunner('C++', iterations, arrayLength);
 
-        tasksRunner.addTask(function bubbleSort(arr) { addon.bubbleSort.call(arr) });
-        tasksRunner.addTask(function countingSort(arr) { addon.countingSort.call(arr) });
-        tasksRunner.addTask(function heapSort(arr) { addon.heapSort.call(arr) });
-        tasksRunner.addTask(function insertionSort(arr) { addon.insertionSort.call(arr) });
-        tasksRunner.addTask(function mergeSort(arr) { addon.mergeSort.call(arr) });
-        tasksRunner.addTask(function quickSort(arr) { addon.quickSort.call(arr) });
-        tasksRunner.addTask(function radixSort(arr) { addon.radixSort.call(arr) });
-        tasksRunner.addTask(function selectionSort(arr) { addon.selectionSort.call(arr) });
-        tasksRunner.addTask(function stdSort(arr) { addon.stdSort.call(arr) });
+        tasksRunner.addTask(function bubbleSort(arr) { return addon.bubbleSort.call(arr); });
+        tasksRunner.addTask(function countingSort(arr) { return addon.countingSort.call(arr); });
+        tasksRunner.addTask(function heapSort(arr) { return addon.heapSort.call(arr); });
+        tasksRunner.addTask(function insertionSort(arr) { return addon.insertionSort.call(arr); });
+        tasksRunner.addTask(function mergeSort(arr) { return addon.mergeSort.call(arr); });
+        tasksRunner.addTask(function quickSort(arr) { return addon.quickSort.call(arr); });
+        tasksRunner.addTask(function radixSort(arr) { return addon.radixSort.call(arr); });
+        tasksRunner.addTask(function selectionSort(arr) { return addon.selectionSort.call(arr); });
+        tasksRunner.addTask(function stdSort(arr) { return addon.stdSort.call(arr); });
 
         const algResults = tasksRunner.execute();
         const stats = Statistics.getStats(algResults);

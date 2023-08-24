@@ -7,7 +7,7 @@ export function countingSort(arr: number[]): number[] {
     const countArray = new Array(range).fill(0);
 
     // Count the occurrences of each element
-    for (let num of arr) {
+    for (const num of arr) {
         countArray[num - min]++;
     }
 
@@ -18,7 +18,7 @@ export function countingSort(arr: number[]): number[] {
 
     // Build the sorted output array
     const outputArray = new Array(arr.length);
-    for (let num of arr) {
+    for (const num of arr) {
         outputArray[countArray[num - min] - 1] = num;
         countArray[num - min]--;
     }

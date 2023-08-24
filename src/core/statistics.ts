@@ -9,9 +9,10 @@ export interface IStat {
 export class Statistics {
 
     public static getStats(data: Map<string, number>[]): IStat[] {
+        if (data.length === 0) return [];
         const dividedData: Map<string, number[]> = this.divideByAlgorithm(data);
         return this.createStats(dividedData);
-    };
+    }
 
     private static divideByAlgorithm(data: Map<string, number>[]): Map<string, number[]> {
         const res: Map<string, number[]> = new Map();
@@ -49,5 +50,4 @@ export class Statistics {
         const average = sum / numbers.length;
         return average;
     }
-
 }

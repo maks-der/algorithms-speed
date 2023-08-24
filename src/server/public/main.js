@@ -1,16 +1,17 @@
+/* eslint-disable no-undef */
 (() => {
     const jsCtx = document.getElementById('jsChart').getContext('2d');
     const cppCtx = document.getElementById('cppChart').getContext('2d');
 
-    const bubbleSortCtx = document.getElementById("bubble-sort").getContext('2d');
-    const countingSortCtx = document.getElementById("counting-sort").getContext('2d');
-    const heapSortCtx = document.getElementById("heap-sort").getContext('2d');
-    const insertionSortCtx = document.getElementById("insertion-sort").getContext('2d');
-    const mergeSortCtx = document.getElementById("merge-sort").getContext('2d');
-    const quickSortCtx = document.getElementById("quick-sort").getContext('2d');
-    const radixSortCtx = document.getElementById("radix-sort").getContext('2d');
-    const selectionSortCtx = document.getElementById("selection-sort").getContext('2d');
-    const sortSortCtx = document.getElementById("sort-func").getContext('2d');
+    const bubbleSortCtx = document.getElementById('bubble-sort').getContext('2d');
+    const countingSortCtx = document.getElementById('counting-sort').getContext('2d');
+    const heapSortCtx = document.getElementById('heap-sort').getContext('2d');
+    const insertionSortCtx = document.getElementById('insertion-sort').getContext('2d');
+    const mergeSortCtx = document.getElementById('merge-sort').getContext('2d');
+    const quickSortCtx = document.getElementById('quick-sort').getContext('2d');
+    const radixSortCtx = document.getElementById('radix-sort').getContext('2d');
+    const selectionSortCtx = document.getElementById('selection-sort').getContext('2d');
+    const sortSortCtx = document.getElementById('sort-func').getContext('2d');
 
     const brightColors = ['#c11', '#d50', '#dd0', '#0d5', '#0cc', '#06f', '#c0c', '#70f', '#eee', '#000', '#000'];
 
@@ -66,8 +67,8 @@
             dataSet.stats.forEach(stat => {
                 const { title, average } = stat;
                 if (map.has(title)) {
-                    const data = map.get(title)
-                    data.push(average)
+                    const data = map.get(title);
+                    data.push(average);
                     map.set(title, data);
                     return;
                 }
@@ -75,8 +76,7 @@
             });
         });
 
-        // console.log(map);
-        colorIndex = 0;
+        let colorIndex = 0;
         for (const [title, timeSeries] of map) {
             res.push(createDatasetItem(title, timeSeries, brightColors[colorIndex]));
             colorIndex++;
@@ -104,7 +104,7 @@
                     fill: true,
                     data: item.data,
                 },
-            ]
+            ];
             result.push(sortItem);
         });
         

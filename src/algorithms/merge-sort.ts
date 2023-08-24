@@ -11,7 +11,7 @@ export function mergeSort(arr: number[]): number[] {
 }
 
 function merge(left: number[], right: number[]): number[] {
-    let result = [];
+    const result = [];
     let leftIndex = 0;
     let rightIndex = 0;
 

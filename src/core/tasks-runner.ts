@@ -1,7 +1,7 @@
 
 export class TasksRunner {
 
-    private tasks = new Map<string, (...args: any[]) => any>();
+    private tasks = new Map<string, (args: number[]) => number[]>();
     private array: number[];
 
     constructor(
@@ -12,7 +12,7 @@ export class TasksRunner {
         this.array = this.generateArrayOfRandomIntegers(arrLength);
     }
 
-    public addTask(task: (...args: any[]) => any): void {
+    public addTask(task: (args: number[]) => number[]): void {
         this.tasks.set(task.name, task);
     }
 
@@ -36,17 +36,21 @@ export class TasksRunner {
     }
 
     private generateArrayOfRandomIntegers(length: number): number[] {
-        let randomArray: number[] = [];
+        const randomArray: number[] = [];
 
-        for (let i = 0; i < length; i++) {
-            let randomNumber = Math.floor(Math.random() * length) + 1;
+        for (let i = 0; i < length;) {
+            let randomNumber = Math.floor(Math.random() * length);
+            if (randomNumber !== 0) randomNumber *= (Math.random() > 0.5 ? 1 : -1);
+
+            if (randomArray.includes(randomNumber)) continue;
             randomArray.push(randomNumber);
+            i++;
         }
 
         return randomArray;
     }
 
-    private funcExecutionTime(func: () => any): number {
+    private funcExecutionTime(func: () => number[]): number {
         const startTime = process.hrtime();
         func();
         const endTime = process.hrtime(startTime);

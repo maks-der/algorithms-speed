@@ -11,7 +11,7 @@ export function selectionSort(arr: number[]): number[] {
         }
 
         if (minIndex !== i) {
-            let temp = arr[i];
+            const temp = arr[i];
             arr[i] = arr[minIndex];
             arr[minIndex] = temp;
         }

@@ -9,7 +9,3 @@ app.run();
 console.log('> End');
 
 // TODO: refactor algorithms
-
-// TODO: add some linter to cpp?
-
-// TODO: add search algorithms

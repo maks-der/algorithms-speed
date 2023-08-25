@@ -1,4 +1,3 @@
-import { TasksRunner } from './tasks-runner';
 import {
     bubbleSort,
     jsSort,
@@ -16,6 +15,8 @@ import { writeFileSync } from 'fs';
 import { join } from 'path';
 import { Server } from '../server';
 import { binarySearch, exponentialSearch, fibonacciSearch, interpolationSearch, jumpSearch, linearSearch } from '../search_algorithms';
+import { SortRunner } from './tasks-runners/sort-runner';
+import { SearchRunner } from './tasks-runners/search-runner';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const addon = require('../../build/Release/addon'); // Should stay require
@@ -65,7 +66,7 @@ export class Application {
     }
 
     private runJsSortAlgorithms(iterations: number, arrayLength: number): IArrayStats {
-        const tasksRunner = new TasksRunner('JS sort', iterations, arrayLength, 'sort');
+        const tasksRunner = new SortRunner('JS sort', iterations, arrayLength);
 
         tasksRunner.addTask(bubbleSort);
         tasksRunner.addTask(countingSort);
@@ -85,7 +86,7 @@ export class Application {
     }
 
     private runCppSortAlgorithms(iterations: number, arrayLength: number): IArrayStats {
-        const tasksRunner = new TasksRunner('C++ sort', iterations, arrayLength, 'sort');
+        const tasksRunner = new SortRunner('C++ sort', iterations, arrayLength);
 
         tasksRunner.addTask(function bubbleSort(arr: number[]) { addon.bubbleSort.call(arr); });
         tasksRunner.addTask(function countingSort(arr: number[]) { addon.countingSort.call(arr); });
@@ -104,7 +105,7 @@ export class Application {
     }
 
     private runJsSearchAlgorithms(iterations: number, arrayLength: number): IArrayStats {
-        const tasksRunner = new TasksRunner('JS search', iterations, arrayLength, 'search');
+        const tasksRunner = new SearchRunner('JS search', iterations, arrayLength * 100);
 
         tasksRunner.addTask(binarySearch);
         tasksRunner.addTask(exponentialSearch);
@@ -120,7 +121,7 @@ export class Application {
     }
 
     private runCppSearchAlgorithms(iterations: number, arrayLength: number): IArrayStats {
-        const tasksRunner = new TasksRunner('C++ search', iterations, arrayLength, 'search');
+        const tasksRunner = new SearchRunner('C++ search', iterations, arrayLength);
 
         tasksRunner.addTask(function binarySearch(arr: number[], target: number) { addon.binarySearch.call(arr, target); });
         tasksRunner.addTask(function exponentialSearch(arr: number[], target: number) { addon.exponentialSearch.call(arr, target); });

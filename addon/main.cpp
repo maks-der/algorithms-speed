@@ -1,5 +1,6 @@
 #include <node_api.h>
-#include "algorithms/algorithms.h"
+#include "sort_algorithms/sort_algorithms.h"
+#include "search_algorithms/search_algorithms.h"
 
 namespace addon
 {
@@ -15,6 +16,13 @@ namespace addon
             {"radixSort", nullptr, radix_sort, nullptr, nullptr, nullptr, napi_default, nullptr},
             {"selectionSort", nullptr, selection_sort, nullptr, nullptr, nullptr, napi_default, nullptr},
             {"stdSort", nullptr, std_sort, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+            {"binarySearch", nullptr, binary_search, nullptr, nullptr, nullptr, napi_default, nullptr},
+            {"exponentialSearch", nullptr, exponential_search, nullptr, nullptr, nullptr, napi_default, nullptr},
+            {"fibonacciSearch", nullptr, fibonacci_search, nullptr, nullptr, nullptr, napi_default, nullptr},
+            {"interpolationSearch", nullptr, interpolation_search, nullptr, nullptr, nullptr, napi_default, nullptr},
+            {"jumpSearch", nullptr, jump_search, nullptr, nullptr, nullptr, napi_default, nullptr},
+            {"linearSearch", nullptr, linear_search, nullptr, nullptr, nullptr, napi_default, nullptr},
         };
 
         napi_define_properties(env, exports, sizeof(descriptors) / sizeof(descriptors[0]), descriptors);
@@ -22,5 +30,4 @@ namespace addon
     }
 
     NAPI_MODULE(NODE_GYP_MODULE_NAME, Init);
-
 }

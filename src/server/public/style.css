@@ -4,7 +4,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-h2 {
+hr {
+    margin: 3rem 1em;
+}
+
+h1, h2 {
     margin-left: 2rem;
 }
 

@@ -1,10 +1,8 @@
 #include <node_api.h>
-#include "algorithms.h"
+#include "sort_algorithms.h"
 #include <algorithm>
 #include <vector>
 #include "../helpers/helpers.h"
-
-using namespace std;
 
 namespace addon
 {

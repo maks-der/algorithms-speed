@@ -1,14 +1,12 @@
 #include <node_api.h>
-#include "algorithms.h"
+#include "sort_algorithms.h"
 #include <vector>
 #include "../helpers/helpers.h"
 
-using namespace std;
-
 namespace addon
 {
-    int partition(std::vector<int> &arr, int low, int high);
-    void quickSort(std::vector<int> &arr, int low, int high);
+    int partition(vector<int> &arr, int low, int high);
+    void quickSort(vector<int> &arr, int low, int high);
 
     napi_value quick_sort(napi_env env, napi_callback_info info)
     {
@@ -20,7 +18,7 @@ namespace addon
         return convert_to_napi_array(env, elements);
     }
 
-    int partition(std::vector<int> &arr, int low, int high)
+    int partition(vector<int> &arr, int low, int high)
     {
         int pivot = arr[high]; // Choose the last element as the pivot
         int i = (low - 1);     // Index of smaller element
@@ -31,16 +29,16 @@ namespace addon
             if (arr[j] <= pivot)
             {
                 ++i; // Increment index of smaller element
-                std::swap(arr[i], arr[j]);
+                swap(arr[i], arr[j]);
             }
         }
 
-        std::swap(arr[i + 1], arr[high]);
+        swap(arr[i + 1], arr[high]);
         return (i + 1);
     }
 
     // TODO: refactor names
-    void quickSort(std::vector<int> &arr, int low, int high)
+    void quickSort(vector<int> &arr, int low, int high)
     {
         if (low < high)
         {

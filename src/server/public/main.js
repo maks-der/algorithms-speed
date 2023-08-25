@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 (() => {
-    const jsCtx = document.getElementById('jsChart').getContext('2d');
-    const cppCtx = document.getElementById('cppChart').getContext('2d');
+    const jsSortCtx = document.getElementById('jsSortCtx').getContext('2d');
+    const cppSortCtx = document.getElementById('cppSortCtx').getContext('2d');
 
     const bubbleSortCtx = document.getElementById('bubble-sort').getContext('2d');
     const countingSortCtx = document.getElementById('counting-sort').getContext('2d');
@@ -12,6 +12,16 @@
     const radixSortCtx = document.getElementById('radix-sort').getContext('2d');
     const selectionSortCtx = document.getElementById('selection-sort').getContext('2d');
     const sortSortCtx = document.getElementById('sort-func').getContext('2d');
+
+    const jsSearchCtx = document.getElementById('jsSearchCtx').getContext('2d');
+    const cppSearchCtx = document.getElementById('cppSearchCtx').getContext('2d');
+
+    const binarySearchCtx = document.getElementById('binary-search').getContext('2d');
+    const exponentialSearchCtx = document.getElementById('exponential-search').getContext('2d');
+    const fibonacciSearchCtx = document.getElementById('fibonacci-search').getContext('2d');
+    const interpolationSearchCtx = document.getElementById('interpolation-search').getContext('2d');
+    const jumpSearchCtx = document.getElementById('jump-search').getContext('2d');
+    const linearSearchCtx = document.getElementById('linear-search').getContext('2d');
 
     const brightColors = ['#c11', '#d50', '#dd0', '#0d5', '#0cc', '#06f', '#c0c', '#70f', '#eee', '#000', '#000'];
 
@@ -85,7 +95,7 @@
         return res;
     }
 
-    function getSortingDatasets(jsDataset, cppDataset) {
+    function getAlgorithmsDatasets(jsDataset, cppDataset) {
         const result = [];
         
         jsDataset.forEach((item, i) => {
@@ -114,28 +124,45 @@
     fetch('data').then(response => response.json()).then(data => {
         // console.log(data);
 
-        const labels = data.js.map(element => element.arrayLength);
+        const labels = data.sortJs.map(element => element.arrayLength);
 
-        const jsDataset = createLangDataset(data.js);
-        const cppDataset = createLangDataset(data.cpp);
+        const jsSortDataset = createLangDataset(data.sortJs);
+        const cppSortDataset = createLangDataset(data.sortCpp);
+        const jsSearchDataset = createLangDataset(data.searchJs);
+        const cppSearchDataset = createLangDataset(data.searchCpp);
 
-        console.log(jsDataset);
+        // console.log(jsSortDataset);
+        // console.log(cppSortDataset);
+        console.log(jsSearchDataset);
+        console.log(cppSearchDataset);
 
-        new Chart(jsCtx, createConfig(labels, jsDataset));
-        new Chart(cppCtx, createConfig(labels, cppDataset));
+        new Chart(jsSortCtx, createConfig(labels, jsSortDataset));
+        new Chart(cppSortCtx, createConfig(labels, cppSortDataset));
 
-        const sortingDatasets = getSortingDatasets(jsDataset, cppDataset);
+        new Chart(jsSearchCtx, createConfig(labels, jsSearchDataset));
+        new Chart(cppSearchCtx, createConfig(labels, cppSearchDataset));
+    
+        const sortAlgorithmsDatasets = getAlgorithmsDatasets(jsSortDataset, cppSortDataset);
 
-        console.log(sortingDatasets);
-        new Chart(bubbleSortCtx, createConfig(labels, sortingDatasets[0]));
-        new Chart(countingSortCtx, createConfig(labels, sortingDatasets[1]));
-        new Chart(heapSortCtx, createConfig(labels, sortingDatasets[2]));
-        new Chart(insertionSortCtx, createConfig(labels, sortingDatasets[3]));
-        new Chart(mergeSortCtx, createConfig(labels, sortingDatasets[4]));
-        new Chart(quickSortCtx, createConfig(labels, sortingDatasets[5]));
-        new Chart(radixSortCtx, createConfig(labels, sortingDatasets[6]));
-        new Chart(selectionSortCtx, createConfig(labels, sortingDatasets[7]));
-        new Chart(sortSortCtx, createConfig(labels, sortingDatasets[8]));
+        new Chart(bubbleSortCtx, createConfig(labels, sortAlgorithmsDatasets[0]));
+        new Chart(countingSortCtx, createConfig(labels, sortAlgorithmsDatasets[1]));
+        new Chart(heapSortCtx, createConfig(labels, sortAlgorithmsDatasets[2]));
+        new Chart(insertionSortCtx, createConfig(labels, sortAlgorithmsDatasets[3]));
+        new Chart(mergeSortCtx, createConfig(labels, sortAlgorithmsDatasets[4]));
+        new Chart(quickSortCtx, createConfig(labels, sortAlgorithmsDatasets[5]));
+        new Chart(radixSortCtx, createConfig(labels, sortAlgorithmsDatasets[6]));
+        new Chart(selectionSortCtx, createConfig(labels, sortAlgorithmsDatasets[7]));
+        new Chart(sortSortCtx, createConfig(labels, sortAlgorithmsDatasets[8]));
+
+        const searchAlgorithmsDatasets = getAlgorithmsDatasets(jsSearchDataset, cppSearchDataset);
+
+        console.log(searchAlgorithmsDatasets);
+        new Chart(binarySearchCtx, createConfig(labels, searchAlgorithmsDatasets[0]));
+        new Chart(exponentialSearchCtx, createConfig(labels, searchAlgorithmsDatasets[1]));
+        new Chart(fibonacciSearchCtx, createConfig(labels, searchAlgorithmsDatasets[2]));
+        new Chart(interpolationSearchCtx, createConfig(labels, searchAlgorithmsDatasets[3]));
+        new Chart(jumpSearchCtx, createConfig(labels, searchAlgorithmsDatasets[4]));
+        new Chart(linearSearchCtx, createConfig(labels, searchAlgorithmsDatasets[5]));
     }).catch(error => {
         console.error('Error fetching data:', error);
     });

@@ -10,7 +10,6 @@ console.log('> End');
 
 // TODO: refactor algorithms
 
-// TODO: add eslint
 // TODO: add some linter to cpp?
 
 // TODO: add search algorithms

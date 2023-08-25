@@ -9,6 +9,7 @@ using namespace std;
 namespace addon {
     vector<int> get_elements_of_array(napi_env env, napi_callback_info info);
     napi_value convert_to_napi_array(napi_env env, vector<int> elements);
+    int get_searched_int(napi_env env, napi_callback_info info);
 }
 
 #endif

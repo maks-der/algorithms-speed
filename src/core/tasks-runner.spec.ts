@@ -2,7 +2,7 @@ import { TasksRunner } from './tasks-runner';
 
 describe('class TasksRunner', () => {
     it('should generate an array of random integers and all should be unique', () => {
-        const tasksRunner = new TasksRunner('Test', 1, 1000);
+        const tasksRunner = new TasksRunner('Test', 1, 1000, 'sort');
         const lengths = [10, 100, 1000, 10000, 100000];
         lengths.forEach((len) => {
             const randomArray = tasksRunner['generateArrayOfRandomIntegers'](len);
@@ -16,7 +16,7 @@ describe('class TasksRunner', () => {
     });
 
     it('should measure function execution time', () => {
-        const tasksRunner = new TasksRunner('Test', 1, 1000);
+        const tasksRunner = new TasksRunner('Test', 1, 1000, 'sort');
         const testFunction = () => {
             const res = [];
             for (let i = 0; i < 1000; i++) {

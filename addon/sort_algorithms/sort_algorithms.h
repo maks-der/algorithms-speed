@@ -1,7 +1,7 @@
 #include <node_api.h>
 
-#ifndef ALGORITHMS_H
-#define ALGORITHMS_H
+#ifndef SORT_ALGORITHMS_H
+#define SORT_ALGORITHMS_H
 
 namespace addon
 {

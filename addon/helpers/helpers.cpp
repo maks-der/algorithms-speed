@@ -1,5 +1,7 @@
 #include <node_api.h>
 #include <vector>
+#include <sstream>
+#include <iostream>
 
 using namespace std;
 
@@ -42,5 +44,17 @@ namespace addon
         }
 
         return sortedArray;
+    }
+
+    int get_searched_int(napi_env env, napi_callback_info info)
+    {
+        size_t argc = 1;
+        napi_value args[1];
+        napi_get_cb_info(env, info, &argc, args, NULL, NULL);
+
+        int32_t num;
+        napi_get_value_int32(env, args[0], &num);
+
+        return num;
     }
 }

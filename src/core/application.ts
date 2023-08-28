@@ -26,7 +26,7 @@ export interface IArrayStats {
     stats: IStat[];
 }
 
-export interface IResultsData{
+export interface IResultsData {
     sortJs: IArrayStats[],
     sortCpp: IArrayStats[],
     searchJs: IArrayStats[],
@@ -36,18 +36,20 @@ export interface IResultsData{
 export class Application {
 
     public run(): void {
-        const { arrayLength, iterations } = config;
+        const { sortArrayLength, searchArrayLength, searchIterations, sortIterations } = config;
         const jsSortResults: IArrayStats[] = [];
         const cppSortResults: IArrayStats[] = [];
         const jsSearchResults: IArrayStats[] = [];
         const cppSearchResults: IArrayStats[] = [];
 
-        arrayLength.forEach((length: number) => {
-            jsSortResults.push(this.runJsSortAlgorithms(iterations, length));
-            cppSortResults.push(this.runCppSortAlgorithms(iterations, length));
+        sortArrayLength.forEach((length: number) => {
+            cppSortResults.push(this.runCppSortAlgorithms(sortIterations, length));
+            jsSortResults.push(this.runJsSortAlgorithms(sortIterations, length));
+        });
 
-            jsSearchResults.push(this.runJsSearchAlgorithms(iterations, length));
-            cppSearchResults.push(this.runCppSearchAlgorithms(iterations, length));
+        searchArrayLength.forEach((length: number) => {
+            cppSearchResults.push(this.runCppSearchAlgorithms(searchIterations, length));
+            jsSearchResults.push(this.runJsSearchAlgorithms(searchIterations, length));
         });
 
         const results: IResultsData = {
@@ -58,7 +60,7 @@ export class Application {
         };
 
         console.log(results);
-        
+
         this.saveResults(JSON.stringify(results));
 
         const server = new Server();
@@ -105,7 +107,7 @@ export class Application {
     }
 
     private runJsSearchAlgorithms(iterations: number, arrayLength: number): IArrayStats {
-        const tasksRunner = new SearchRunner('JS search', iterations, arrayLength * 100);
+        const tasksRunner = new SearchRunner('JS search', iterations, arrayLength);
 
         tasksRunner.addTask(binarySearch);
         tasksRunner.addTask(exponentialSearch);

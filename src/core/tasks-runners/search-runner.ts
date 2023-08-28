@@ -28,9 +28,12 @@ export class SearchRunner implements IRunner {
             console.log(`${this.prefix}: array[${this.array.length}], iteration: ${i + 1}`);
 
             for (const [name, func] of this.tasks) {
+                // process.stdout.write(name);
+                const copyArray = [...this.array];
                 const target = this.getRandomInt(0, this.arrLength);
-                const execTime = ExecutionMeasurer.funcExecutionTime(() => func(this.array, target));
+                const execTime = ExecutionMeasurer.funcExecutionTime(() => func(copyArray, target));
                 map.set(name, execTime);
+                // process.stdout.clearLine(0);
             }
 
             res.push(map);

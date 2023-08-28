@@ -5,6 +5,8 @@ This project uses the capability to develop Node.js addons using C++, subsequent
 #
 ### Algorithms
 
+Note: The same case runs by all kinds of algorithms per one iteration.
+
 - sort() and std::sort()
 - Bubble Sort
 - Selection Sort
@@ -41,7 +43,9 @@ Keep in mind limit of numbers in JS and integers in C++.
 
 ```json
 {
-    "arrayLength": [1000, 10000, 100000, 1000000],
-    "iterations": 100
+    "sortIterations": 20,
+    "searchIterations": 20,
+    "sortArrayLength": [ 1000, 2000, 3000, 4000, 5000 ],
+    "searchArrayLength": [ 10000, 50000, 100000, 150000, 200000 ]
 }
 ```

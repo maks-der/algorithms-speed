@@ -124,7 +124,8 @@
     fetch('data').then(response => response.json()).then(data => {
         // console.log(data);
 
-        const labels = data.sortJs.map(element => element.arrayLength);
+        const sortLabels = data.sortJs.map(element => element.arrayLength);
+        const searchLabels = data.searchJs.map(element => element.arrayLength);
 
         const jsSortDataset = createLangDataset(data.sortJs);
         const cppSortDataset = createLangDataset(data.sortCpp);
@@ -136,33 +137,33 @@
         console.log(jsSearchDataset);
         console.log(cppSearchDataset);
 
-        new Chart(jsSortCtx, createConfig(labels, jsSortDataset));
-        new Chart(cppSortCtx, createConfig(labels, cppSortDataset));
+        new Chart(jsSortCtx, createConfig(sortLabels, jsSortDataset));
+        new Chart(cppSortCtx, createConfig(sortLabels, cppSortDataset));
 
-        new Chart(jsSearchCtx, createConfig(labels, jsSearchDataset));
-        new Chart(cppSearchCtx, createConfig(labels, cppSearchDataset));
+        new Chart(jsSearchCtx, createConfig(searchLabels, jsSearchDataset));
+        new Chart(cppSearchCtx, createConfig(searchLabels, cppSearchDataset));
     
         const sortAlgorithmsDatasets = getAlgorithmsDatasets(jsSortDataset, cppSortDataset);
 
-        new Chart(bubbleSortCtx, createConfig(labels, sortAlgorithmsDatasets[0]));
-        new Chart(countingSortCtx, createConfig(labels, sortAlgorithmsDatasets[1]));
-        new Chart(heapSortCtx, createConfig(labels, sortAlgorithmsDatasets[2]));
-        new Chart(insertionSortCtx, createConfig(labels, sortAlgorithmsDatasets[3]));
-        new Chart(mergeSortCtx, createConfig(labels, sortAlgorithmsDatasets[4]));
-        new Chart(quickSortCtx, createConfig(labels, sortAlgorithmsDatasets[5]));
-        new Chart(radixSortCtx, createConfig(labels, sortAlgorithmsDatasets[6]));
-        new Chart(selectionSortCtx, createConfig(labels, sortAlgorithmsDatasets[7]));
-        new Chart(sortSortCtx, createConfig(labels, sortAlgorithmsDatasets[8]));
+        new Chart(bubbleSortCtx, createConfig(sortLabels, sortAlgorithmsDatasets[0]));
+        new Chart(countingSortCtx, createConfig(sortLabels, sortAlgorithmsDatasets[1]));
+        new Chart(heapSortCtx, createConfig(sortLabels, sortAlgorithmsDatasets[2]));
+        new Chart(insertionSortCtx, createConfig(sortLabels, sortAlgorithmsDatasets[3]));
+        new Chart(mergeSortCtx, createConfig(sortLabels, sortAlgorithmsDatasets[4]));
+        new Chart(quickSortCtx, createConfig(sortLabels, sortAlgorithmsDatasets[5]));
+        new Chart(radixSortCtx, createConfig(sortLabels, sortAlgorithmsDatasets[6]));
+        new Chart(selectionSortCtx, createConfig(sortLabels, sortAlgorithmsDatasets[7]));
+        new Chart(sortSortCtx, createConfig(sortLabels, sortAlgorithmsDatasets[8]));
 
         const searchAlgorithmsDatasets = getAlgorithmsDatasets(jsSearchDataset, cppSearchDataset);
 
         console.log(searchAlgorithmsDatasets);
-        new Chart(binarySearchCtx, createConfig(labels, searchAlgorithmsDatasets[0]));
-        new Chart(exponentialSearchCtx, createConfig(labels, searchAlgorithmsDatasets[1]));
-        new Chart(fibonacciSearchCtx, createConfig(labels, searchAlgorithmsDatasets[2]));
-        new Chart(interpolationSearchCtx, createConfig(labels, searchAlgorithmsDatasets[3]));
-        new Chart(jumpSearchCtx, createConfig(labels, searchAlgorithmsDatasets[4]));
-        new Chart(linearSearchCtx, createConfig(labels, searchAlgorithmsDatasets[5]));
+        new Chart(binarySearchCtx, createConfig(searchLabels, searchAlgorithmsDatasets[0]));
+        new Chart(exponentialSearchCtx, createConfig(searchLabels, searchAlgorithmsDatasets[1]));
+        new Chart(fibonacciSearchCtx, createConfig(searchLabels, searchAlgorithmsDatasets[2]));
+        new Chart(interpolationSearchCtx, createConfig(searchLabels, searchAlgorithmsDatasets[3]));
+        new Chart(jumpSearchCtx, createConfig(searchLabels, searchAlgorithmsDatasets[4]));
+        new Chart(linearSearchCtx, createConfig(searchLabels, searchAlgorithmsDatasets[5]));
     }).catch(error => {
         console.error('Error fetching data:', error);
     });
